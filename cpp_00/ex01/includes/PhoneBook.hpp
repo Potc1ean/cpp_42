@@ -14,15 +14,16 @@ class PhoneBook {
 
     public:
         PhoneBook();
+        ~PhoneBook();
 
         void add_contact();
         void search_contact();
 
     private:
-        std::vector<Contact> phone_book;
+        int index;
+        Contact phone_book[8];
 
-        std::string truncate(std::string str);
+        std::string truncate(const std::string str);
 };
-
 
 #endif
