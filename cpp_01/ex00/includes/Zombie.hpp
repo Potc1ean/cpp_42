@@ -1,5 +1,4 @@
-#ifndef __ZOMBIE_
-# define __ZOMBIE__
+#pragma once
 
 # include <iostream>
 # include <string>
@@ -7,8 +6,8 @@
 class Zombie {
 
     public :
-        Zombie(std::string n);
-        ~Zombie();
+        Zombie(std::string n) : name(n) {}
+        ~Zombie() {}
         void announce(void);
 
     private :
@@ -17,5 +16,3 @@ class Zombie {
 
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
-
-# endif
