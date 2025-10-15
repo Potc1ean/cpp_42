@@ -1,0 +1,59 @@
+Pointeur vers fonction membre
+
+
+
+leRetourDeLaFonction (T::*NomDuPointeur)(types des parametres) = &class::Methode;
+
+(Myclass.*pointeur)(p);
+
+
+2. Déclaration et affectation d'un pointeur vers une fonction membre
+
+int main()
+{
+    Myclass objet;
+
+    void (Myclass::*ptrAff)() = &Myclass::afficher;
+
+    (objet.*ptrAff)();
+
+    int (Myclass::*ptrAjout)(int, int) = &Myclass::ajouter;
+
+    std::cout << "3 + 5 = " << (objet.*ptrAjout)(3, 5) << std::endl;
+
+    return 0;
+}
+
+3. Utilisation avec un pointeur sur objet
+
+Si on a un pointeur vers un object (Myclass* ptr), on utilise ->* au lieu de .* :
+
+Myclass* ptrObj = new Myclass;
+(ptrObj->*ptrAff)();
+delete ptrObj;
+
+4. Pointeur vers une fonction membre static
+
+Les function static ne sont pas directement liee a un object donc les fonctions static
+d'une class se comportent comme des fonctions normal:
+
+int main()
+{
+    void (*ptr)() = &Myclass::afficherMessage;
+
+    ptr();
+
+    return 0;
+}
+
+Ca a l'air giga inutile mais ca sert pour faire des trucs dinamiques.
+Exemple un tableau de pointeur vers fonctions membres.
+En mode tu les ranges et selon l'index ca va appeler une fonction.
+
+tu peux aussi passer une fonction en parametres.
+
+Par Exemple si selon des cas de figures tu souhaites executer une fonction 
+tu prends son poiteur.
+
+exemple si t'as une fonciton qui riturn une action a effectuer (ptr fonction)
+et qu'apres tu l'as donne a une autre fonciton que l'execute c'est tres puissant

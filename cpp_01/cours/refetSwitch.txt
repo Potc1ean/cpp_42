@@ -1,0 +1,33 @@
+REFERENCE
+
+Permet de definir un autre nom a une variable.
+
+int x = 5;
+int& ref = x;
+
+modifier ref modifira x. sauf si :
+
+const int& ref = x;
+
+Si on utilise une ref en parametres d'une fonction cela permet de la modifier
+sans la dupliquer.
+
+on peut return une ref pour ne pas avoir a la dup ce qui fait un gros gain de perf.
+
+SWITCH
+
+switch  (jour) 
+{
+    case 1:
+        std::cout << "Lundi";
+    case 2:
+        std::cout << "Mardi";
+    default :
+        std::cout << "cACA";
+}
+
+alternative au patte de if.
+
+ne s'arrete pas tant qu'il n'y a pas de break
+
+donc si jour = 2, il fera tous les cas de 2 a break;
