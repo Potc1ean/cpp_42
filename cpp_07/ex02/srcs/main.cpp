@@ -2,7 +2,11 @@
 
 int main( void ) {
     Array<int> r1;
-    // std::cout << r1[0] << std::endl;
+    try {
+        std::cout << r1[0] << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 
     std::cout << "-----------------------" << std::endl;
     Array<int> r2(3);

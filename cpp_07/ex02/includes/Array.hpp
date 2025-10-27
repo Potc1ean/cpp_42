@@ -18,7 +18,7 @@ class Array {
         T& operator[](unsigned int index);
         const T& operator[](unsigned int index) const;
         
-        unsigned int get_len() const;
+        unsigned int size() const;
 };
 
 #include "../srcs/Array.tpp"

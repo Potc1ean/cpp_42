@@ -50,6 +50,6 @@ const T& Array<T>::operator[](unsigned int index) const {
 }
 
 template <typename T>
-unsigned int Array<T>::get_len() const {
+unsigned int Array<T>::size() const {
     return len;
 }
