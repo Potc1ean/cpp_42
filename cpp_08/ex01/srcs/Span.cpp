@@ -32,7 +32,7 @@ int Span::shortestSpan() {
 
     int shortestSpan = data[1] - data[0];
 
-    for (unsigned int i = 1; i < index - 1; i++) {
+    for (unsigned int i = 0; i < index - 1; i++) {
         int currentSpan = data[i + 1] - data[i];
         if (shortestSpan > currentSpan)
             shortestSpan = currentSpan;

@@ -18,10 +18,15 @@ int main( void ) {
         std::list<int>::iterator it_list = easyfind(l, 15);
         std::cout << "Found in list: " << *it_list << std::endl;
 
+        int arr[] = {1, 2, 3};
+        const std::vector<int> const_l(arr, arr + 3);
+
+        std::vector<int>::const_iterator it_const_vec = easyfind(const_l, 3);
+        std::cout << "Found in const vector: " << *it_const_vec << std::endl;
+
         easyfind(v, 100);
     } catch (std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
-    }
-    
+    }   
     return 0;
 }

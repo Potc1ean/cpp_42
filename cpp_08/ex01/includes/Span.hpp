@@ -18,6 +18,12 @@ class Span {
 
         const int* getData() const;
         unsigned int getSize() const;
+
+        template <typename Iterator>
+        void fillSpan(Iterator begin, Iterator end) {
+            for (Iterator it = begin; it != end; it++)
+                addNumber(*it);
+        }
 };
 
 std::ostream& operator<<(std::ostream& o, const Span& span);
