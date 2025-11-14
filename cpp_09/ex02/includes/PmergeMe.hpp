@@ -10,6 +10,8 @@ class PmergeMe
     // --- attributs ---
         std::vector<int> vec;
         std::deque<int> deq;
+        template <typename Container>
+        void measureSortTime(Container &c, const std::string &name);
 
     // --- tools ---
         std::vector<size_t> jacobsthalSequence(size_t n);
