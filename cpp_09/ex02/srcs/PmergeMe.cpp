@@ -22,9 +22,29 @@ template<typename Container>
 void PmergeMe::printSequence(const std::string &label, const Container &seq) const
 {
     std::cout << label;
-    for (typename Container::const_iterator it = seq.begin(); it != seq.end(); ++it)
+
+    int i = 0;
+    typename Container::const_iterator it = seq.begin();
+    for (; it != seq.end() && i < 10; ++it, ++i)
         std::cout << *it << " ";
+        
+    if (i >= 10)
+        std::cout << " [...]";
     std::cout << std::endl;
+}
+
+template <typename Container>
+void PmergeMe::measureSortTime(Container &c, const std::string &name)
+{
+    clock_t start = std::clock();
+    fordJohnsonSort(c);
+    clock_t end = std::clock();
+
+    double duration_ms = double(end - start) * 1000.0 / CLOCKS_PER_SEC;
+
+    std::cout << "Time to process a range of " << c.size()
+              << " elements with " << name << " : "
+              << duration_ms << " ms" << std::endl;
 }
 
 // --- Ford-Johnson algorithm ---
@@ -137,22 +157,13 @@ bool PmergeMe::parseArgs(int argc, char **argv)
 
 void PmergeMe::sortAndDisplay()
 {
+    std::cout << "==== vector ====" << std::endl;
     printSequence("Before: ", vec);
-
-    clock_t start = std::clock();
-    fordJohnsonSort(vec);
-    clock_t end = std::clock();
-    double duration_ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;
+    measureSortTime(vec, "std::vector");
     printSequence("After: ", vec);
-    std::cout << "Time to process a range of " << vec.size()
-              << " elements with std::vector : "
-              << duration_ms << " ms" << std::endl;
 
-    start = std::clock();
-    fordJohnsonSort(deq);
-    end = std::clock();
-    duration_ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;
-    std::cout << "Time to process a range of " << deq.size()
-              << " elements with std::deque : "
-              << duration_ms << " ms" << std::endl;
+    std::cout << "\n==== deque ====" << std::endl;
+    printSequence("Before: ", deq);
+    measureSortTime(deq, "std::deque");
+    printSequence("After: ", deq);
 }
